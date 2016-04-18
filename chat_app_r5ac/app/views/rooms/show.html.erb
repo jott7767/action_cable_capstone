@@ -1,0 +1,12 @@
+<h1><%= @room.name %></h1>
+  <div class="container" id="forum">
+    <% if @messages.any? %>
+      <% @messages.each do |message| %>
+        <div class="message_content">
+          <%= message.content %>
+        </div>
+      <% end %> 
+    <% end %>    
+  </div>
+
+  <%= link_to 'Back', root_path %>

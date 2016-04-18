@@ -1,0 +1,15 @@
+<div class="container">
+<h1>New Room</h1>
+<hr />
+  <div class="field">
+  <%= form_for @room do |f| %>
+    <%= f.label :name %>
+    <br />
+    <%= f.text_field :name %>
+    <br />
+    <%= f.submit %>
+  <% end %>      
+  </div>
+</div>  
+
+

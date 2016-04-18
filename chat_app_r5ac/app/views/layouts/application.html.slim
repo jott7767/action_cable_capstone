@@ -1,15 +1,22 @@
 doctype html
-html lang="en"
+html lang="en" 
   head
-    meta charset="utf-8"
-    meta name="viewport" content="width=device-width, initial-scale=1.0"
-
-    title == content_for?(:title) ? yield(:title) : "Untitled"
-
-    = stylesheet_link_tag "application"
-    = javascript_include_tag "application", "data-turbolinks-track" => true
-    = csrf_meta_tag
-
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    meta charset="utf-8" /
+    meta content="width=device-width, initial-scale=1.0" name="viewport" /
+    title= content_for?(:title) ? yield(:title) : "Untitled"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tags
   body
-
-    == yield
+    - if user_signed_in?
+      .navbar.navbar-default
+        .container-fluid
+          .navbar-brand
+            h4.home
+              strong
+                = link_to "Action Cable", root_path
+          .navbar-text.navbar-right 
+            h4 
+              = link_to "Logout", destroy_user_session_path, method: :delete  
+    = yield

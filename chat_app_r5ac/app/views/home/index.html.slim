@@ -1,2 +1,8 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+h1.text-center Action Cable
+hr
+= link_to 'Create a room', new_room_path
+br
+
+- if @rooms.any?
+  - @rooms.each do |room| 
+    h1 = link_to "#{room.name}", room_path(room)   
